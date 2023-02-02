@@ -1,5 +1,13 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  ManyToMany,
+  ManyToOne,
+  PrimaryColumn,
+} from "typeorm";
 import { v4 as uuidv4 } from "uuid";
+import { User } from "./user.entity";
 
 @Entity("contact")
 export class Contact {
@@ -17,6 +25,9 @@ export class Contact {
 
   @CreateDateColumn()
   createdAt: Date;
+
+  @ManyToOne(() => User, { onDelete: "CASCADE" })
+  user: User;
 
   constructor() {
     if (!this.id) {

@@ -1,6 +1,13 @@
 import { Exclude } from "class-transformer";
-import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryColumn,
+} from "typeorm";
 import { v4 as uuidv4 } from "uuid";
+import { Contact } from "./contact.entity";
 
 @Entity("user")
 export class User {
@@ -22,6 +29,9 @@ export class User {
   @Column({ length: 120 })
   @Exclude()
   password: string;
+
+  @OneToMany(() => Contact, (contact) => contact.user)
+  contacts: Contact[];
 
   constructor() {
     if (!this.id) {

@@ -13,7 +13,7 @@ const createContactService = async ({
   const contactRepository = AppDataSource.getRepository(Contact);
   const userRepository = AppDataSource.getRepository(User);
 
-  const user = userRepository.findOneBy({ id: idUser });
+  const user = await userRepository.findOneBy({ id: idUser });
 
   if (!user) {
     throw new AppError("User not exists", 400);
@@ -23,6 +23,7 @@ const createContactService = async ({
     name: name,
     email: email,
     telephone: telephone,
+    user: user,
   });
 
   await contactRepository.save(contact);
