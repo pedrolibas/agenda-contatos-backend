@@ -1,9 +1,13 @@
 import { Router } from "express";
-import { createUserController } from "../controllers/user.controller";
+import {
+  createUserController,
+  listUserController,
+} from "../controllers/user.controller";
 import verifyAuthMiddleware from "../middlewares/verifyAuth.middleware";
 
 const userRoutes = Router();
 
-userRoutes.post("", verifyAuthMiddleware,createUserController);
+userRoutes.post("", createUserController);
+userRoutes.get("", verifyAuthMiddleware, listUserController);
 
 export default userRoutes;
