@@ -4,6 +4,7 @@ import { User } from "../entities/user.entity";
 import { AppError } from "../errors/appError";
 import { Ilogin } from "../interfaces/sessions.interface";
 import jwt from "jsonwebtoken";
+import "dotenv/config"
 
 const loginService = async ({ email, password }: Ilogin) => {
   const userRepository = AppDataSource.getRepository(User);

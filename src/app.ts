@@ -4,11 +4,13 @@ import express from "express";
 import handleErrorMiddleware from "./middlewares/handleError.middlewares";
 import userRoutes from "./routes/user.routes";
 import sessionRoutes from "./routes/sessions.routes";
+import contactRoutes from "./routes/contact.routes";
 
 const app = express();
 app.use(express.json());
 app.use("/users", userRoutes);
 app.use("/login", sessionRoutes);
+app.use("/contact", contactRoutes);
 app.use(handleErrorMiddleware);
 
 export default app;
