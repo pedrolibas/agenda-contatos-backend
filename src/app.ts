@@ -5,8 +5,10 @@ import handleErrorMiddleware from "./middlewares/handleError.middlewares";
 import userRoutes from "./routes/user.routes";
 import sessionRoutes from "./routes/sessions.routes";
 import contactRoutes from "./routes/contact.routes";
+import cors from "cors"
 
 const app = express();
+app.use(cors())
 app.use(express.json());
 app.use("/users", userRoutes);
 app.use("/login", sessionRoutes);
