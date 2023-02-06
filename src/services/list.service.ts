@@ -13,7 +13,7 @@ const listUserService = async (id: string) => {
     }
   })
 
-  return user;
+  return user[0];
 };
 
 export default listUserService;

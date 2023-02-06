@@ -21,5 +21,5 @@ export const listUserController = async (req: Request, res: Response) => {
 
   const user = await listUserService(id)
 
-  return res.status(200).json(user)
+  return res.status(200).json(instanceToPlain(user))
 }
