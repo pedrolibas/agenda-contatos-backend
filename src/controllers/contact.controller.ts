@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { instanceToPlain } from "class-transformer";
-import createContactService from "../services/contact.service";
+import createContactService from "../services/contacts/createContact.service";
 
 export const createContactController = async (req: Request, res: Response) => {
   const { name, email, telephone } = req.body;

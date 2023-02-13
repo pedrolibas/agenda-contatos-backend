@@ -1,10 +1,10 @@
 import { compare } from "bcrypt";
-import AppDataSource from "../data-source";
-import { User } from "../entities/user.entity";
-import { AppError } from "../errors/appError";
-import { Ilogin } from "../interfaces/sessions.interface";
+import AppDataSource from "../../data-source";
+import { User } from "../../entities/user.entity";
+import { AppError } from "../../errors/appError";
+import { Ilogin } from "../../interfaces/sessions.interface";
 import jwt from "jsonwebtoken";
-import "dotenv/config"
+import "dotenv/config";
 
 const loginService = async ({ email, password }: Ilogin) => {
   const userRepository = AppDataSource.getRepository(User);

@@ -1,7 +1,7 @@
-import AppDataSource from "../data-source";
-import { User } from "../entities/user.entity";
-import { AppError } from "../errors/appError";
-import { IUserRequest } from "../interfaces/user.interface";
+import AppDataSource from "../../data-source";
+import { User } from "../../entities/user.entity";
+import { AppError } from "../../errors/appError";
+import { IUserRequest } from "../../interfaces/user.interface";
 import bcrypt from "bcrypt";
 
 const createUserService = async ({
