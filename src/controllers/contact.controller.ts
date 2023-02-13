@@ -3,6 +3,7 @@ import { instanceToPlain } from "class-transformer";
 import createContactService from "../services/contacts/createContact.service";
 import updateContactService from "../services/contacts/updateContact.service";
 import deleteContactService from "../services/contacts/deleteContact.service";
+import listOneContactService from "../services/contacts/listOneContact.service";
 
 export const createContactController = async (req: Request, res: Response) => {
   const { name, email, telephone } = req.body;
@@ -39,4 +40,12 @@ export const deleteContactController = async (req: Request, res: Response) => {
   await deleteContactService(idContact, idUser);
 
   return res.send(204);
+};
+
+export const listOneContactController = async (req: Request, res: Response) => {
+  const idContact = req.params.id;
+
+  const contact = await listOneContactService(idContact);
+
+  return res.json(contact).status(200);
 };
