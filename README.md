@@ -14,6 +14,10 @@
 
 - `yarn typeorm migration:run -d src/data-source.ts`
 
+### 5. Para iniciar a aplicação rode o seguinte comando:
+
+- `yarn dev`
+
 ## Tecnologias ultilizadas:
 
 - Typescript
@@ -79,35 +83,42 @@ Essa aplicação foi desenvolvida com o propósito de oferecer aos usuários uma
 }
 ```
 
-### Criação de contato
+### Rotas que precisam de token de autenticação:
 
-#### `POST /contact - FORMATO DE REQUISIÇÃO`
+### Atualizar usuário
+
+#### `PATCH /users - FORMATO DE REQUISIÇÂO`
 
 ```json
 {
-  "name": "teste2",
-  "email": "teste2@gmail.com",
-  "telephone": "+5533102842"
+  "name": "Nome atualizado"
 }
 ```
 
-#### `POST /contact - FORMATO DE RESPOSTA - STATUS 201`
+#### `PATCH /users - FORMATO DE RESPOSTA - STATUS 200`
 
 ```json
 {
-  "id": "5d0a608c-ac98-4408-a866-040e22fbaa82",
-  "name": "teste2",
-  "email": "teste2@gmail.com",
-  "telephone": "+5533102842",
-  "user": {
-    "id": "981e0532-435f-4510-928e-28ae64ea74c2",
-    "name": "teste",
-    "email": "teste@gmail.com",
-    "telephone": "+55339999999",
-    "createdAt": "2023-02-02T04:24:44.497Z"
-  },
-  "createdAt": "2023-02-02T05:34:51.389Z"
+  "id": "981e0532-435f-4510-928e-28ae64ea74c2",
+  "name": "Nome atualizado",
+  "email": "teste@gmail.com",
+  "telephone": "+55339999999",
+  "createdAt": "2023-02-02T04:24:44.497Z"
 }
+```
+
+### Deleção de usuário
+
+#### `DELETE /users - FORMATO DE REQUISIÇÃO`
+
+```json
+Vazio
+```
+
+#### `DELETE /users - FORMATO DE RESPOSTA - STATUS 204`
+
+```json
+Vazio
 ```
 
 ### Dados de um usuário
@@ -143,5 +154,106 @@ Vazio
       "createdAt": "2023-02-02T05:34:51.389Z"
     }
   ]
+}
+```
+
+### Criação de contato
+
+#### `POST /contact - FORMATO DE REQUISIÇÃO`
+
+```json
+{
+  "name": "teste2",
+  "email": "teste2@gmail.com",
+  "telephone": "+5533102842"
+}
+```
+
+#### `POST /contact - FORMATO DE RESPOSTA - STATUS 201`
+
+```json
+{
+  "id": "5d0a608c-ac98-4408-a866-040e22fbaa82",
+  "name": "teste2",
+  "email": "teste2@gmail.com",
+  "telephone": "+5533102842",
+  "user": {
+    "id": "981e0532-435f-4510-928e-28ae64ea74c2",
+    "name": "teste",
+    "email": "teste@gmail.com",
+    "telephone": "+55339999999",
+    "createdAt": "2023-02-02T04:24:44.497Z"
+  },
+  "createdAt": "2023-02-02T05:34:51.389Z"
+}
+```
+
+### Atualização de contato
+
+#### `PATCH /contact/:id - FORMATO DE REQUISIÇÃO`
+
+```json
+{
+  "email": "email@alterado.com"
+}
+```
+
+#### `PATCH /contact/:id - FORMATO DE RESPOSTA - STATUS 200`
+
+```json
+{
+  "id": "5d0a608c-ac98-4408-a866-040e22fbaa82",
+  "name": "teste2",
+  "email": "email@alterado.com",
+  "telephone": "+5533102842",
+  "user": {
+    "id": "981e0532-435f-4510-928e-28ae64ea74c2",
+    "name": "teste",
+    "email": "teste@gmail.com",
+    "telephone": "+55339999999",
+    "createdAt": "2023-02-02T04:24:44.497Z"
+  },
+  "createdAt": "2023-02-02T05:34:51.389Z"
+}
+```
+
+### Deleção de contato
+
+#### `DELETE /contact/:id - FORMATO DE REQUISIÇÃO`
+
+```json
+Vazio
+```
+
+#### `DELETE /contact/:id - FORMATO DE RESPOSTA - STATUS 204`
+
+```json
+Vazio
+```
+
+### Listagem de um contato
+
+#### `GET /contact/:id - FORMATO DE REQUISIÇÃO`
+
+```json
+Vazio
+```
+
+#### `GET /contact/:id - FORMATO DE RESPOSTA - STATUS 200`
+
+```json
+{
+  "id": "5d0a608c-ac98-4408-a866-040e22fbaa82",
+  "name": "teste2",
+  "email": "email@alterado.com",
+  "telephone": "+5533102842",
+  "user": {
+    "id": "981e0532-435f-4510-928e-28ae64ea74c2",
+    "name": "teste",
+    "email": "teste@gmail.com",
+    "telephone": "+55339999999",
+    "createdAt": "2023-02-02T04:24:44.497Z"
+  },
+  "createdAt": "2023-02-02T05:34:51.389Z"
 }
 ```
