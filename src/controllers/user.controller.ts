@@ -3,6 +3,7 @@ import createUserService from "../services/users/createUser.service";
 import { instanceToPlain } from "class-transformer";
 import listUserService from "../services/users/listOneUser.service";
 import updateUserService from "../services/users/updateUser.service";
+import deleteUserService from "../services/users/deleteUser.service";
 
 export const createUserController = async (req: Request, res: Response) => {
   const { name, email, telephone, password } = req.body;
@@ -32,4 +33,12 @@ export const updateUserController = async (req: Request, res: Response) => {
   const updatedUser = await updateUserService(userUpdate, idUser);
 
   return res.json(instanceToPlain(updatedUser));
+};
+
+export const deleteUserController = async (req: Request, res: Response) => {
+  const idUser = req.user.id;
+
+  await deleteUserService(idUser);
+
+  return res.send(204);
 };
