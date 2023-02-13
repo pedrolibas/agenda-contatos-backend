@@ -1,16 +1,8 @@
 import AppDataSource from "../../data-source";
 import { Contact } from "../../entities/contact.entity";
 import { AppError } from "../../errors/appError";
-import {
-  IContactRequest,
-  IContactUpdate,
-} from "../../interfaces/contact.inteface";
 
-const updateContactService = async (
-  { name, email, telephone }: IContactUpdate,
-  idContact: string,
-  idUser: string
-) => {
+const deleteContactService = async (idContact: string, idUser: string) => {
   const contactRepository = AppDataSource.getRepository(Contact);
 
   const findContact = await contactRepository.findOne({
@@ -30,17 +22,9 @@ const updateContactService = async (
     throw new AppError("You are not the owner of this contact.", 403);
   }
 
-  await contactRepository.update(idContact, {
-    name: name ? name : findContact.name,
-    email: email ? email : findContact.email,
-    telephone: telephone ? telephone : findContact.telephone,
-  });
+  await contactRepository.delete(idContact);
 
-  const contact = await contactRepository.findOneBy({
-    id: idContact,
-  });
-
-  return contact!;
+  return;
 };
 
-export default updateContactService;
+export default deleteContactService;
